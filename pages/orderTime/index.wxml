@@ -1,0 +1,57 @@
+<!--pages/orderTime/index.wxml-->
+<view class='containt'>
+  <scroll-view class="scroll-view_H" scroll-x>
+    <view class='list' style='width:{{ width }}rpx'>
+      <view bindtap="select" wx:for="{{ calendar }}" wx:for-item="item" wx:for-index="index" data-index="{{ index }}" class='listItem {{index==currentIndex? "current":""}}'>
+        <text class='name'>{{ item.week }}</text>
+        <text class='date'>{{ item.date }}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <view class='time'>
+    <!-- <view wx:if="{{item.week=='星期六'||item.week=='星期日'}}">非工作日
+      <view wx:for="{{ timeArr2 }}" wx:for-item="timeItem" wx:for-index="timeIndex" data-Tindex="{{ timeIndex }}" bindtap='selectTime' class='listItem {{ currentTime==timeIndex? "current":"" }}'>
+      <text>{{ timeItem.time }}</text>
+      <text>{{ timeItem.status }}</text>
+    </view>
+    </view>
+    <view wx:else>工作日
+      <view wx:for="{{ timeArr1 }}" wx:for-item="timeItem" wx:for-index="timeIndex" data-Tindex="{{ timeIndex }}" bindtap='selectTime' class='listItem {{ currentTime==timeIndex? "current":"" }}'>
+      <text>{{ timeItem.time }}</text>
+      <text>{{ timeItem.status }}</text>
+    </view>
+    </view> -->
+
+    <view wx:for="{{ timeArr2 }}" wx:for-item="timeItem" wx:for-index="timeIndex" data-Tindex="{{ timeIndex }}" bindtap='selectTime' class='listItem {{ currentTime==timeIndex? "current":"" }}'>
+      <text>{{ timeItem.time }}</text>
+      <text>{{ timeItem.status }}</text>
+    </view>
+  </view>
+  <!-- <view class='operate'>
+   <button class='del'>删除</button>
+   <button class='save'>保存</button>
+  </view> -->
+  <view class="section" bindtap="login2">
+        <view class="section__title"></view>
+        <picker mode="date" value="{{date}}" start="2022-04-01" bindchange="bindDateChange">
+            <view class="picker">
+                预计年审日期: {{date}}
+            </view>
+        </picker>
+    </view>
+    <!-- <view wx:if="{{date}}==2022-04-06">成功登录</view>
+    <view wx:else>登录失败</view> -->
+
+
+    <view class="section" bindtap="login3">
+        <view class="section__title"></view>
+        <picker mode="time" value="{{time}}" start="09:00" end="16:00" bindchange="bindTimeChange">
+            <view class="picker">
+                预计年审时间: {{time}}
+            </view>
+        </picker>
+    </view>
+  <!-- <js src="utils.js" module ="utils"/> -->
+ <!-- //传入日期进行调用 -->
+ <!-- <text >{{utils.getDates(item.date)}}</text> -->
+</view>
